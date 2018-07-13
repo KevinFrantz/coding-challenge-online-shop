@@ -1,6 +1,8 @@
 <?php
 namespace entity\payment;
 
+use entity\order\OrderInterface;
+
 /**
  *
  * @author kevinfrantz
@@ -8,5 +10,6 @@ namespace entity\payment;
  */
 interface PaymentInterface
 {
+    public function pay(OrderInterface $order):void;
 }
 
