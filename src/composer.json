@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "psr-4": {
+      "": "./"
+    }
+  },
+    "require": {
+        "phpunit/phpunit": "7.2.0",
+        "doctrine/coding-standard":"4.0.0",
+        "doctrine/collections": "^1.5",
+    "twig/twig": "^2.5"
+    }
+}
