@@ -12,6 +12,9 @@ use entity\user\UserInterface;
  * 
  * In a real application an entity status would be helpfull ;)
  * 
+ * Order and basket are in this case the same entity. Designwise an other solution may would be better.
+ * E.g. entity basket as an attribut of order. 
+ * 
  * @author kevinfrantz
  *        
  */
