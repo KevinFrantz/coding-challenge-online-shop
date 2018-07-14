@@ -1,3 +1,13 @@
 {% extends "frames/default.html.twig" %}
 {% block title %}Homepage{% endblock %}
-{% block content %}Welcome to the online shop ;){% endblock %}
+{% block content %}
+<h2>Welcome to the online shop!</h2>
+You have the following options:
+<ul>
+{% for option in options %}
+  <li>
+    <a href="{{option.getUrl}}">{{option.getName}}</a>
+  </li>
+{% endfor %}
+</ul>
+{% endblock %}
