@@ -33,6 +33,9 @@ To run the program execute:
 ```bash
   bash ./start.sh
 ```
+### Attention
+This is a demo program; Everytime when you start the demo the database will be reset.
+
 ## test
 To run the tests execute:
 ```bash
