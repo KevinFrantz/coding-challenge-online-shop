@@ -3,7 +3,6 @@ namespace entity\product;
 
 use entity\price\PriceInterface;
 use entity\image\ImageInterface;
-use entity\color\ColorInterface;
 
 /**
  * Attention:

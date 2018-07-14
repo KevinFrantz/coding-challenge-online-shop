@@ -40,6 +40,8 @@ interface OrderInterface
      */
     public function getId():int;
     
+    public function setId(int $id):void;
+    
     /**
      * @return UserInterface
      */
@@ -48,7 +50,7 @@ interface OrderInterface
     /**
      * @param UserInterface $customer
      */
-    public function setCutomer(UserInterface $customer);
+    public function setCustomer(UserInterface $customer);
     
     /**
      * @param bool $status
