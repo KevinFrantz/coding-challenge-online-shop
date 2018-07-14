@@ -35,7 +35,7 @@ final class Router implements RouterInterface
      * {@inheritdoc}
      * @see \router\RouterInterface::route()
      */
-    public function route(): void
+    public function route()
     {
         if ($this->get) {
             switch ($this->get['controller']) {
