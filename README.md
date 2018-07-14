@@ -31,10 +31,10 @@ existing colors.
 ## start
 To run the program execute:
 ```bash
-  docker-compose up -d
+  bash ./start.sh
 ```
 ## test
 To run the tests execute:
 ```bash
-  test.sh
+  bash ./test.sh
 ```
