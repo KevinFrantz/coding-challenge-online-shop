@@ -16,6 +16,8 @@ class UserTest extends TestCase
     
     const HASH = '1235';
     
+    const ID = 5678;
+    
     /**
      * @var User
      */
@@ -26,6 +28,7 @@ class UserTest extends TestCase
         $this->user->setName(self::NAME);
         $this->user->setEmail(self::EMAIL);
         $this->user->setPasswordHash(self::HASH);
+        $this->user->setId(self::ID);
     }
     
     public function testName():void{
@@ -40,5 +43,8 @@ class UserTest extends TestCase
         $this->assertEquals(self::HASH, $this->user->getPasswordHash());
     }
     
+    public function testId():void{
+        $this->assertEquals(self::ID, $this->user->getId());
+    }
 }
 

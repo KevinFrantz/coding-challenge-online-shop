@@ -1,6 +1,8 @@
 <?php
 namespace entity\user;
 
+use entity\UniqueInterface;
+
 /**
  * Theoreticly you could make an own entity for name
  * (Depends on the use case.)
@@ -9,7 +11,7 @@ namespace entity\user;
  * @author kevinfrantz
  *        
  */
-interface UserInterface
+interface UserInterface extends UniqueInterface
 {
     /**
      * @param string $hash

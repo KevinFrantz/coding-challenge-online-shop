@@ -3,6 +3,7 @@ namespace entity\product;
 
 use entity\price\PriceInterface;
 use entity\image\ImageInterface;
+use entity\UniqueInterface;
 
 /**
  * Attention:
@@ -12,7 +13,7 @@ use entity\image\ImageInterface;
  * @author kevinfrantz
  *        
  */
-interface ProductInterface
+interface ProductInterface extends UniqueInterface
 {
     /**
      * @return PriceInterface
@@ -53,12 +54,5 @@ interface ProductInterface
      * @param string $color
      */
     public function setColor(string $color):void;
-    
-    /**
-     * @return int
-     */
-    public function getId():int;
-    
-    public function setId(int $id):void;
 }
 

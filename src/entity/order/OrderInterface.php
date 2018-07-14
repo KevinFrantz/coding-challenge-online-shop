@@ -4,6 +4,7 @@ namespace entity\order;
 use entity\product\ProductInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use entity\user\UserInterface;
+use entity\UniqueInterface;
 
 /**
  * Status in this class is bool
@@ -18,7 +19,7 @@ use entity\user\UserInterface;
  * @author kevinfrantz
  *        
  */
-interface OrderInterface
+interface OrderInterface extends UniqueInterface
 {
     /**
      * @param ProductInterface $product
@@ -34,13 +35,6 @@ interface OrderInterface
      * @return ArrayCollection
      */
     public function getProducts():ArrayCollection;
-    
-    /**
-     * @return int
-     */
-    public function getId():int;
-    
-    public function setId(int $id):void;
     
     /**
      * @return UserInterface

@@ -23,6 +23,12 @@ final class User implements UserInterface
      * @var string
      */
     private $passwordHash;
+ 
+    /**
+     * 
+     * @var int
+     */
+    private $id;
     
     public function setName(string $name): void
     {
@@ -53,5 +59,15 @@ final class User implements UserInterface
     {
         return $this->email;
     }
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
 }
 
