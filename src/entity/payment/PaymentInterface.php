@@ -1,8 +1,6 @@
 <?php
 namespace entity\payment;
 
-use entity\order\OrderInterface;
-
 /**
  *
  * @author kevinfrantz
@@ -10,6 +8,10 @@ use entity\order\OrderInterface;
  */
 interface PaymentInterface
 {
-    public function pay(OrderInterface $order):void;
+    /**
+     * Returns the name of the payment Method
+     * @return string
+     */
+    public static function getName():string;
 }
 
