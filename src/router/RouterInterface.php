@@ -10,7 +10,7 @@ use core\CoreInterface;
  */
 interface RouterInterface
 {
-    public function setCore(CoreInterface $core);
+    public function setCore(CoreInterface $core):void;
 
     /**
      * Post parameters are used to save data
@@ -22,10 +22,10 @@ interface RouterInterface
      * Get Parameters are used to request Data
      * @param array $get
      */
-    public function setGet(array $get);
+    public function setGet(array $get):void;
 
     /**
      * Opens the controller
      */
-    public function route();
+    public function route():void;
 }
