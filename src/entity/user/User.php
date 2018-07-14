@@ -14,6 +14,7 @@ final class User implements UserInterface
     private $name;
     
     /**
+     * Unique identifier in database
      * @var string
      */
     private $email;
@@ -52,9 +53,5 @@ final class User implements UserInterface
     {
         return $this->email;
     }
-
-    public function getId(): int
-    {}
-
 }
 
