@@ -14,7 +14,7 @@ interface OrderInterface
     
     public function addProduct():void;
     
-    public function showBasket():void;
+    public function basket():void;
     
     public function selectPaymentMethod():void;
 }

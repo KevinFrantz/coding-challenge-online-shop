@@ -12,8 +12,8 @@ interface ProductInterface
      * but it's to abstract for this concrete exampl ;)
      * @param string $color
      */
-    public function filterByColor(string $color):void;
+    public function colorFilter(string $color):void;
     
-    public function showAll():void;
+    public function list():void;
 }
 

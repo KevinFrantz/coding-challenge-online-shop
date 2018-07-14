@@ -15,8 +15,15 @@ abstract class AbstractController
      */
     protected $core;
     
+    /**
+     * 
+     * @var array
+     */
+    protected $post;
+    
     public function __construct(CoreInterface $core){
         $this->core = $core;    
+        $this->post = $_POST;
     }
     
     protected function render(string $template,array $variables=[]):void{
