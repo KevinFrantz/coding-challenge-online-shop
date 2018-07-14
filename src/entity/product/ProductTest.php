@@ -62,7 +62,7 @@ class ProductTest extends TestCase
     }
     
     public function testName():void{
-        $this->assertEquals(self::NAME, $this->product->getColor());
+        $this->assertEquals(self::NAME, $this->product->getName());
     }
 }
 
