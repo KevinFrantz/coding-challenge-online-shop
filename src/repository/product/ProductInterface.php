@@ -2,7 +2,7 @@
 namespace repository\product;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use entity\product\ProductInterface as ProductEntityInterface;
+
 /**
  *
  * @author kevinfrantz
@@ -14,6 +14,8 @@ interface ProductInterface
     
     public function addProducts(ArrayCollection $products):void;
     
-    public function getProductById(int $id):ProductEntityInterface;
+    public function getColors():array;
+    
+    public function getAllByColor(string $color):ArrayCollection;
 }
 

@@ -53,9 +53,7 @@ final class Router implements RouterInterface
                     $productController = new Product($this->core);
                     switch ($this->get['action']) {
                         case 'list':
-                            return $productController->list();
-                        case 'color':
-                            return $productController->colorFilter($this->get['color']);
+                            return $productController->list(($this->get['color'])?$this->get['color']:null);
                     }
                 case 'order':
                     $orderController = new Order($this->core);

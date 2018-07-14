@@ -1,6 +1,17 @@
 {% extends 'frames/default.html.twig' %}
 {% block title %}product overview{% endblock %}
 {% block content %}
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    filter by color:
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {% for color in colors %}
+    	<a class="dropdown-item" href="{{ color.getUrl }}">{{ color.getName }}</a>
+    {% endfor %}
+  </div>
+</div>
+<hr />
 <div class="card-columns">
 	{% for product in products %}
 	<div class="card" style="width: 18rem;">

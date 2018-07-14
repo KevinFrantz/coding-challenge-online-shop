@@ -48,15 +48,27 @@ final class Product extends AbstractRepository implements ProductInterface
         }
     }
 
+    public function getColors(): array
+    {
+        $statement = $this->database->prepare('SELECT DISTINCT color FROM product;');
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    private function transformFetchToArrayCollection(array $fetch): ArrayCollection
+    {
+        $products = new ArrayCollection();
+        foreach ($fetch as $product) {
+            $products->add($this->createProduct($product['name'], $product['color'], $product['price'], $product['tax'], $product['image']));
+        }
+        return $products;
+    }
+
     public function getAllProducts(): ArrayCollection
     {
         $statement = $this->database->prepare('SELECT * FROM ' . self::TABLE . ';');
         $statement->execute();
-        $products = new ArrayCollection();
-        foreach ($statement->fetchAll() as $product) {
-            $products->add($this->createProduct($product['name'], $product['color'], $product['price'], $product['tax'], $product['image']));
-        }
-        return $products;
+        return $this->transformFetchToArrayCollection($statement->fetchAll());
     }
 
     static public function createProduct(string $name, string $color, int $cents, int $tax, string $imagePath): ProductEntity
@@ -76,6 +88,10 @@ final class Product extends AbstractRepository implements ProductInterface
         return $product;
     }
 
-    public function getProductById(int $id): ProductEntityInterface
-    {}
+    public function getAllByColor(string $color): ArrayCollection
+    {
+        $statement = $this->database->prepare('SELECT * FROM ' . self::TABLE . ' WHERE color = ?;');
+        $statement->execute([$color]);
+        return $this->transformFetchToArrayCollection($statement->fetchAll());
+    }
 }

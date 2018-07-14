@@ -7,13 +7,6 @@ namespace controller\product;
  */
 interface ProductInterface
 {
-    /**
-     * An own Class filter would be better, 
-     * but it's to abstract for this concrete exampl ;)
-     * @param string $color
-     */
-    public function colorFilter(string $color):void;
-    
-    public function list():void;
+    public function list(?string $color = null):void;
 }
 
