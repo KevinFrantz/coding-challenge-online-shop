@@ -17,9 +17,9 @@ final class UrlImage implements ImageInterface
      * {@inheritDoc}
      * @see \entity\image\ImageInterface::getImageThumbnail()
      */
-    public function getImageThumbnail(): string
+    public function getThumbnail(): string
     {
-        return $this->path;    
+        return str_replace('200/300', '200/200', $this->path);    
     }
 
     public function getImage(): string

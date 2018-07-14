@@ -10,7 +10,9 @@ use PHPUnit\Framework\TestCase;
  */
 class UrlImageTest extends TestCase
 {
-    const IMAGE_URL = 'http://dummy.image/test.jpg';
+    const IMAGE_URL = 'http://dummy.image/200/300/test.jpg';
+    
+    const IMAGE_THUMB_URL = 'http://dummy.image/200/200/test.jpg';
     
     /**
      * @var UrlImage
@@ -27,7 +29,7 @@ class UrlImageTest extends TestCase
     }
     
     public function testThumbnail():void{
-        $this->assertEquals(self::IMAGE_URL, $this->urlImage->getImageThumbnail());
+        $this->assertEquals(self::IMAGE_THUMB_URL, $this->urlImage->getThumbnail());
     }
 }
 

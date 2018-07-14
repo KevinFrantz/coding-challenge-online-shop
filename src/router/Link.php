@@ -2,11 +2,11 @@
 namespace router;
 
 /**
- *
+ * A link containes out of get parameters
  * @author kevinfrantz
  *        
  */
-class Link
+final class Link
 {
     /** 
      * ArrayCollection would be nicer but I have to save time ;)

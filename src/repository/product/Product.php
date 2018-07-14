@@ -37,23 +37,30 @@ final class Product extends AbstractRepository implements ProductInterface
             $statement->execute([
                 $product->getName(),
                 $product->getColor(),
-                $product->getPrice()->getNetto()->getCents(),
-                $product->getPrice()->getTax(),
-                $product->getImage()->getImage(),
+                $product->getPrice()
+                    ->getNetto()
+                    ->getCents(),
+                $product->getPrice()
+                    ->getTax(),
+                $product->getImage()
+                    ->getImage()
             ]);
         }
     }
 
     public function getAllProducts(): ArrayCollection
     {
-        $statement = $this->database->prepare('SELECT * FROM '.self::TABLE.';');
+        $statement = $this->database->prepare('SELECT * FROM ' . self::TABLE . ';');
         $statement->execute();
-        foreach ($statement->fetchAll() as $product){
-            
+        $products = new ArrayCollection();
+        foreach ($statement->fetchAll() as $product) {
+            $products->add($this->createProduct($product['name'], $product['color'], $product['price'], $product['tax'], $product['image']));
         }
+        return $products;
     }
-    
-    static public function createProduct(string $name, string $color, int $cents, int $tax, string $imagePath):ProductEntity{
+
+    static public function createProduct(string $name, string $color, int $cents, int $tax, string $imagePath): ProductEntity
+    {
         $product = new ProductEntity();
         $product->setName($name);
         $product->setColor($color);
@@ -68,9 +75,6 @@ final class Product extends AbstractRepository implements ProductInterface
         $product->setImage($image);
         return $product;
     }
-
-    public function deleteAllProducts(): void
-    {}
 
     public function getProductById(int $id): ProductEntityInterface
     {}

@@ -21,6 +21,6 @@ interface ImageInterface
     /**
      * @return string
      */
-    public function getImageThumbnail():string;
+    public function getThumbnail():string;
 }
 

@@ -50,7 +50,7 @@ final class Router implements RouterInterface
                             return $userController->register();
                     }
                 case 'product':
-                    $productController = new Product();
+                    $productController = new Product($this->core);
                     switch ($this->get['action']) {
                         case 'list':
                             return $productController->list();

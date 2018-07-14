@@ -1,0 +1,24 @@
+{% extends 'frames/default.html.twig' %}
+{% block title %}product overview{% endblock %}
+{% block content %}
+<div class="card-columns">
+	{% for product in products %}
+	<div class="card" style="width: 18rem;">
+		<img class="card-img-top" src="{{ product.getImage.getThumbnail }}" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">
+				{{ product.getName }} <i>({{ product.getColor }})</i>
+			</h5>
+			<span class="card-text">
+			<b>price:</b>
+			<ul>
+				<li>{{ product.getPrice.getNetto.getFloat }} {{ product.getPrice.getNetto.getSymbol }} <i>(net)</i></li>
+				<li>{{ product.getPrice.getGross.getFloat }} {{ product.getPrice.getGross.getSymbol }} <i>(gross)</i></li>
+			</ul>
+			</span>
+			<a href="#" class="btn btn-primary">Add to basket</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
