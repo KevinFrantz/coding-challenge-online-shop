@@ -1,10 +1,6 @@
 <?php
 use core\Core;
 use Doctrine\Common\Collections\ArrayCollection;
-use entity\product\Product;
-use entity\currency\Euro;
-use entity\price\Price;
-use entity\image\UrlImage;
 use repository\product\Product as ProductRepository;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -38,18 +34,12 @@ $lines = explode("\n", trim(file_get_contents(__DIR__ . '/monking/product.csv'))
 unset($lines[0]);
 foreach ($lines as $number=>$line) {
     $colums = explode(',', $line);
-    $product = new Product();
-    $product->setName($colums[0]);  
-    $product->setColor($colums[1]);
-    $euro = new Euro();
-    $euro->setCents((int) (floatval($colums[2]) * 100));
-    $price = new Price();
-    $price->setPrice($euro);
-    $price->setTax((int)$colums[3]);
-    $product->setPrice($price);
-    $image = new UrlImage();
-    $image->setImage($colums[4]);
-    $product->setImage($image);
+    $product = ProductRepository::createProduct(
+        $colums[0],
+        $colums[1],
+        (int) (floatval($colums[2]) * 100), 
+        (int)$colums[3], 
+        $colums[4]);
     echo $number.'. product '.$product->getName()." added to collection...\n";
     $products->add($product);
 }

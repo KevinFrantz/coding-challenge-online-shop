@@ -4,7 +4,11 @@ namespace repository\product;
 use Doctrine\Common\Collections\ArrayCollection;
 use repository\AbstractRepository;
 use entity\product\ProductInterface as ProductEntityInterface;
+use entity\product\Product as ProductEntity;
 use core\Core;
+use entity\currency\Euro;
+use entity\price\Price;
+use entity\image\UrlImage;
 
 /**
  *
@@ -41,7 +45,29 @@ final class Product extends AbstractRepository implements ProductInterface
     }
 
     public function getAllProducts(): ArrayCollection
-    {}
+    {
+        $statement = $this->database->prepare('SELECT * FROM '.self::TABLE.';');
+        $statement->execute();
+        foreach ($statement->fetchAll() as $product){
+            
+        }
+    }
+    
+    static public function createProduct(string $name, string $color, int $cents, int $tax, string $imagePath):ProductEntity{
+        $product = new ProductEntity();
+        $product->setName($name);
+        $product->setColor($color);
+        $euro = new Euro();
+        $euro->setCents($cents);
+        $price = new Price();
+        $price->setPrice($euro);
+        $price->setTax($tax);
+        $product->setPrice($price);
+        $image = new UrlImage();
+        $image->setImage($imagePath);
+        $product->setImage($image);
+        return $product;
+    }
 
     public function deleteAllProducts(): void
     {}
