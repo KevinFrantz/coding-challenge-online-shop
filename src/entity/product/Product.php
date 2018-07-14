@@ -1,7 +1,6 @@
 <?php
 namespace entity\product;
 
-use entity\color\ColorInterface;
 use entity\price\PriceInterface;
 use entity\image\ImageInterface;
 
@@ -18,10 +17,10 @@ final class Product implements ProductInterface
     public function getName(): string
     {}
 
-    public function setColor(ColorInterface $color): void
+    public function setColor(string $color): void
     {}
 
-    public function getColor(): ColorInterface
+    public function getColor(): string
     {}
 
     public function setId(int $id): void

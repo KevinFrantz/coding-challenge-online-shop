@@ -46,14 +46,14 @@ interface ProductInterface
     public function setName(string $name):void;
     
     /**
-     * @return ColorInterface
+     * @return string
      */
-    public function getColor():ColorInterface;
+    public function getColor():string;
     
     /**
-     * @param ColorInterface $color
+     * @param string $color
      */
-    public function setColor(ColorInterface $color):void;
+    public function setColor(string $color):void;
     
     /**
      * @return int
