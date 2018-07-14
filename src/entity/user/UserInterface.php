@@ -40,10 +40,5 @@ interface UserInterface
      * @return string
      */
     public function getEmail():string;
-    
-    /**
-     * @return int
-     */
-    public function getId():int;
 }
 
