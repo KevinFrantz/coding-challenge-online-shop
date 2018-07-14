@@ -29,7 +29,12 @@ existing colors.
 - Please cover your code with unit tests.
 
 ## start
-To run the program execute
+To run the program execute:
 ```bash
   docker-compose up -d
+```
+## test
+To run the tests execute:
+```bash
+  test.sh
 ```
