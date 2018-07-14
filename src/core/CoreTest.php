@@ -40,5 +40,9 @@ class CoreTest extends TestCase
     public function testUser():void{
         $this->assertEquals($this->user, $this->core->getUser());
     }
+    
+    public function testSession():void{
+        $this->assertEquals($this->core->getUser(), $_SESSION['user']);
+    }
 }
 
