@@ -14,7 +14,7 @@ interface PriceInterface
      * Sets the price
      * @param CurrencyInterface $price
      */
-    public function setPrice(CurrencyInterface $price):void;
+    public function setPrice(CurrencyInterface $netto):void;
     
     /**
      * Returns the netto price
@@ -27,5 +27,9 @@ interface PriceInterface
      * @return int
      */
     public function getGross():CurrencyInterface;
+    
+    public function setTax(int $percent):void;
+    
+    public function getTax():int;
 }
 
