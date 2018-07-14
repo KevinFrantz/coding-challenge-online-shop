@@ -14,7 +14,7 @@ final class User implements UserInterface
     private $name;
     
     /**
-     * Unique identifier in database
+     * Unique identifier in database (Id would be better but to much overhead for this example)
      * @var string
      */
     private $email;
