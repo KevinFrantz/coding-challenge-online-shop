@@ -1,6 +1,7 @@
 # coding-challenge-online-shop
 Coding challenge for a online shop
-# requirements
+## tasks
+### requirements
 1. Create a web application with PHP which works like a really small online shop.
 2. Create a database with at least 20 products automatically per script.
 3. Create a product listing which display all products from the database. The following information are required:
@@ -19,10 +20,16 @@ method2.
 10. Store the order at the database.
 11. Add a color filter to the product list. The user should be able to filter the listing with the
 existing colors.
-# specifications
+### specifications
 - Please use PHP, MySQL and HTML. You can also use CSS, JavaScript, Bootstrap and jQuery.
 - Save your code online at github.
 - Please use an autoloader and namespaces.
 - Don’t use a ready to go framework. Build the application from the scratch.
 - Use transactions if it makes sense.
 - Please cover your code with unit tests.
+
+## start
+To run the program execute
+```bash
+  docker-compose up -d
+```
