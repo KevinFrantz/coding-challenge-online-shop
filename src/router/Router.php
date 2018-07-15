@@ -43,7 +43,7 @@ final class Router implements RouterInterface
         if ($this->get) {
             switch ($this->get[self::CONTROLLER]) {
                 case 'user':
-                    $userController = new User();
+                    $userController = new User($this->core);
                     switch ($this->get[self::ACTION]) {
                         case 'login':
                             return $userController->login();
