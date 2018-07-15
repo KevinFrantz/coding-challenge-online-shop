@@ -43,7 +43,7 @@ This is a demo program; Everytime when you restart the demo the database will be
 The start.sh file needs docker and docker-compose.
 
 ### access
-If you started the application you can run access it with a browser on <a href="http://localhost:8100/">localhost:8100</a>.
+If you started the application you can access it with a browser on <a href="http://localhost:8100/">localhost:8100</a>.
 
 ## test
 To run the tests execute:
