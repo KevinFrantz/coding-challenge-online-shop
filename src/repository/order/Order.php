@@ -16,7 +16,7 @@ final class Order extends AbstractRepository implements OrderInterface
         $this->database->beginTransaction();
         $this->saveOrderEntity($order);
         $this->saveConnection($order);
-        return $this->database->rollBack();
+        return $this->database->commit();
     }
     
     /**
