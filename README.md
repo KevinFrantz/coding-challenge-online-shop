@@ -1,10 +1,10 @@
 # coding-challenge-online-shop
 Coding challenge for a online shop
-## tasks
+## task
 ### requirements
 1. Create a web application with PHP which works like a really small online shop.  	&#10003;
 2. Create a database with at least 20 products automatically per script.  	&#10003;
-3. Create a product listing which display all products from the database. The following information are required:
+3. Create a product listing which display all products from the database.  	&#10003; <br> The following information are required:
   - price net and gross  	&#10003;
   - image  	&#10003;
   - product name  	&#10003;
@@ -20,13 +20,14 @@ method2 &#10003;.
 10. Store the order at the database. &#10003;
 11. Add a color filter to the product list. The user should be able to filter the listing with the existing colors. &#10003;
 ### specifications
-- Please use PHP 	&#10003;, MySQL  	&#10003; and HTML  	&#10003;. You can also use CSS &#10003;, JavaScript, Bootstrap  	&#10003; and jQuery.
+- Please use PHP 	&#10003;, MySQL  	&#10003; and HTML  	&#10003;. You can also use CSS, JavaScript, Bootstrap  	&#10003; and jQuery.
 - Save your code online at github.  	&#10003;
 - Please use an autoloader and namespaces.  	&#10003;
 - Don’t use a ready to go framework. Build the application from the scratch.  	&#10003;
 - Use transactions if it makes sense.  	&#10003;
 - Please cover your code with unit tests.  	&#10003;
-
+### time frame
+one weekend
 ## start
 To run the program execute:
 ```bash
@@ -34,6 +35,9 @@ To run the program execute:
 ```
 ### Attention
 This is a demo program; Everytime when you start the demo the database will be reset.
+
+### requirements
+The start.sh file needs docker and docker-compose.
 
 ## test
 To run the tests execute:
