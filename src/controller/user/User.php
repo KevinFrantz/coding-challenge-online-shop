@@ -2,8 +2,6 @@
 namespace controller\user;
 
 use controller\AbstractDefaultController;
-use router\Router;
-use controller\AbstractController;
 use core\CoreInterface;
 use repository\user\User as UserRepository;
 use entity\user\User as UserEntity;
@@ -15,7 +13,6 @@ use entity\user\User as UserEntity;
  */
 final class User extends AbstractDefaultController implements UserInterface
 {
-
     /**
      *
      * @var UserRepository
@@ -37,11 +34,7 @@ final class User extends AbstractDefaultController implements UserInterface
     public function login(): void
     {
         if ($this->post) {
-            try {
-                $this->loginRoutine();
-            } catch (\Exception $exception) {
-                $this->render('frames/exception.html.twig',['message'=>$exception->getMessage()]);
-            }
+            $this->loginRoutine();
         } else {
             $this->render('user/login.html.twig');
         }
@@ -58,7 +51,35 @@ final class User extends AbstractDefaultController implements UserInterface
 
     public function register(): void
     {
-        $this->render('user/register.html.twig');
+        if ($this->post && $this->validateRegistrationData()) {
+            $this->registerRoutine();
+        } else {
+            $this->render('user/register.html.twig');
+        }
+    }
+
+    private function registerRoutine(): void
+    {
+        $requestedUser = new UserEntity();
+        $requestedUser->setPasswordHashByPassword($this->post['password']);
+        $requestedUser->setName($this->post['name']);
+        $requestedUser->setEmail($this->post['email']);
+        $this->repository->addUser($requestedUser);
+        $this->route();
+    }
+
+    private function validateRegistrationData():bool
+    {
+        if (! filter_var($this->post['email'], FILTER_VALIDATE_EMAIL)) {
+            throw new \Exception('Not a valid email!');
+        }
+        if (strlen($this->post['name']) < 1) {
+            throw new \Exception('Name to short!');
+        }
+        if (strlen($this->post['password']) < 8) {
+            throw new \Exception('Password to short!');
+        }
+        return true;
     }
 }
 
