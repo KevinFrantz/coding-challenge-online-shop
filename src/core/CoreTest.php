@@ -26,6 +26,9 @@ class CoreTest extends TestCase
     protected function setUp():void{
         $this->core = new Core();
         $this->user = new User();
+        $this->user->setId(1);
+        $this->user->setEmail('test@mail.test');
+        $this->user->setPasswordHashByPassword('passwort:)');
         $this->core->setUser($this->user);
     }
     
@@ -42,7 +45,7 @@ class CoreTest extends TestCase
     }
     
     public function testSession():void{
-        $this->assertEquals($this->core->getUser(), $_SESSION['user']);
+        $this->assertEquals($this->core->getUser()->getPasswordHash(), $_SESSION['user']['hash']);
     }
 }
 

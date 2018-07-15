@@ -3,6 +3,9 @@ namespace core;
 
 use entity\order\Order;
 use entity\user\UserInterface;
+use repository\user\User as UserRepository;
+use repository\user\UserInterface as UserRepositoryInterface;
+use entity\user\User;
 
 /**
  *
@@ -46,8 +49,14 @@ final class Core implements CoreInterface
      */
     private $basket;
     
+    /**
+     * @var UserRepositoryInterface
+     */
+    private $userRepository;
+    
     public function __construct()
     {
+        session_start();
         $this->initTwig();
         $this->initDatabase();
         $this->initUser();
@@ -70,9 +79,17 @@ final class Core implements CoreInterface
      */
     private function initUser(): void
     {
+        $this->userRepository = new UserRepository($this);
         if($_SESSION['user']){
-            $this->user = $_SESSION['user'];
+            $this->user = $this->getUserBySession();
         }
+    }
+    
+    private function getUserBySession():UserInterface{
+        $user = new User();
+        $user->setPasswordHash($_SESSION['user']['hash']);
+        $user->setEmail($_SESSION['user']['email']);
+        return $this->userRepository->getUserByMailAndHash($user);
     }
 
     private function initTwig(): void
@@ -101,9 +118,21 @@ final class Core implements CoreInterface
         return $this->user;
     }
 
+    private function setUserSession():void{
+        if($this->user){
+            $_SESSION['user'] = [
+                'email'=>$this->user->getEmail(),
+                'hash'=>$this->user->getPasswordHash(),
+            ];
+        }else{
+            unset($_SESSION['user']);
+        }
+    }
+    
     public function setUser(?UserInterface $user = null): void
     {
-        $_SESSION['user'] = $this->user = $user;
+        $this->user = $user;
+        $this->setUserSession();
     }
     
     /**
