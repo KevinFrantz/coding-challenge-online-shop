@@ -16,10 +16,20 @@ basket
 	<tr>
 		<td>{{product.id}}</td>
 		<td>{{product.name}}</td>
-		<td>{{product.price.netto.float}}</td>
+		<td>{{product.price.netto.float}} {{product.price.netto.symbol}}</td>
 		<td>{{product.price.tax}}</td>
-		<td>{{product.price.gross.float}}</td>
+		<td>{{product.price.gross.float}} {{product.price.gross.symbol}}</td>
 	</tr>
 	{% endfor %}
 </table>
+<form method="post">
+	<select class="form-control form-control-lg">
+		<option value="" disabled selected>Payment method</option>
+		{% for key,payment in payment_methods %}
+		<option value="{{ key }}">{{ payment.name }}</option>
+		{% endfor %}
+	</select>
+	<input type="hidden" name="store" value="1" />
+	<input type="submit" class="btn btn-primary" value="Order" />
+</form>
 {% endblock %}

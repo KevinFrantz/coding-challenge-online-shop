@@ -6,6 +6,7 @@ use core\CoreInterface;
 use repository\order\OrderInterface as OrderRepositoryInterface;
 use repository\product\ProductInterface as ProductRepositoryInterface;
 use repository\product\Product as ProductRepository;
+use entity\payment\AbstractPayment;
 
 /**
  *
@@ -47,7 +48,8 @@ final class Order extends AbstractDefaultController implements OrderInterface
             $this->postRoutine();
         }
         $this->render('order/basket.html.twig', [
-            'basket' => $this->core->getBasket()
+            'basket' => $this->core->getBasket(),
+            'payment_methods'=>AbstractPayment::getPaymentMethods(),
         ]);
     }
 
@@ -57,8 +59,5 @@ final class Order extends AbstractDefaultController implements OrderInterface
             $this->addProduct();
         }
     }
-
-    public function selectPaymentMethod(): void
-    {}
 }
 

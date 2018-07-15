@@ -8,6 +8,4 @@ namespace controller\order;
 interface OrderInterface
 {
     public function basket():void;
-    
-    public function selectPaymentMethod():void;
 }
