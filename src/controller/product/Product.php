@@ -1,17 +1,17 @@
 <?php
 namespace controller\product;
 
-use controller\AbstractController;
 use repository\product\Product as ProductRepository;
 use core\Core;
-use router\Link;
+use router\link\Link;
+use controller\AbstractDefaultController;
 
 /**
  *
  * @author kevinfrantz
  *        
  */
-final class Product extends AbstractController implements ProductInterface
+final class Product extends AbstractDefaultController implements ProductInterface
 {
 
     /**
@@ -23,7 +23,7 @@ final class Product extends AbstractController implements ProductInterface
     public function __construct(Core $core)
     {
         parent::__construct($core);
-        $this->productRepository = new ProductRepository($this->core->getDatabase());
+        $this->productRepository = new ProductRepository($this->core);
     }
 
     public function list(?string $color = null): void

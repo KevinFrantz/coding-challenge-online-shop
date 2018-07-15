@@ -1,5 +1,5 @@
 <?php
-namespace router;
+namespace router\link;
 
 /**
  * A button containes out of a link and post parameters

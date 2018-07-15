@@ -24,7 +24,7 @@
 			<b>price:</b>
 			<ul>
 				<li>{{ product.getPrice.getNetto.getFloat }} {{ product.getPrice.getNetto.getSymbol }} <i>(net)</i></li>
-				<li>{{ product.getPrice.getGross.getFloat }} {{ product.getPrice.getGross.getSymbol }} <i>(gross)</i></li>
+				<li>{{ product.getPrice.getGross.getFloat }} {{ product.getPrice.getGross.getSymbol }} <i>(gross)</i>, Tax: {{ product.getPrice.getTax }} %</li>
 			</ul>
 			</span>
 			<a href="#" class="btn btn-primary">Add to basket</a>

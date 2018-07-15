@@ -1,10 +1,7 @@
 {% extends "base.html.twig" %}
 {% block body %}
+{% include 'frames/structure/navbar.html.twig' with menu_items %}
 <div class="container">
-	<div class="page-header">
-		<h1>Online Shop</h1>
-		<hr />
-	</div>
 	{% block content %}
 	{% endblock %}
 </div>

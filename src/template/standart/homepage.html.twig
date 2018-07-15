@@ -4,7 +4,7 @@
 <h2>Welcome to the online shop!</h2>
 You have the following options:
 <ul>
-{% for option in options %}
+{% for option in menu_items %}
   <li>
     <a href="{{option.getUrl}}">{{option.getName}}</a>
   </li>

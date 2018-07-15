@@ -27,7 +27,14 @@ abstract class AbstractController
     }
     
     protected function render(string $template,array $variables=[]):void{
-        echo $this->core->getTwig()->render($template,$variables);
+        echo $this->core->getTwig()->render($template,$this->addUser($variables));
+    }
+    
+    private function addUser(array $variables):array{
+        if(array_key_exists('user', $variables)){
+            throw new \Exception('Key user isn\'t allowed!');
+        }
+        $variables['user'] = $this->core->getUser();
+        return $variables;
     }
 }
-
