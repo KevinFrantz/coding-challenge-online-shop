@@ -3,9 +3,7 @@ namespace core;
 
 use entity\order\Order;
 use entity\user\UserInterface;
-use repository\user\User as UserRepository;
 use repository\user\UserInterface as UserRepositoryInterface;
-use entity\user\User;
 
 /**
  *
@@ -44,23 +42,31 @@ final class Core implements CoreInterface
     private $database;
 
     /**
-     * 
+     *
      * @var Order
      */
     private $basket;
-    
+
     /**
+     *
      * @var UserRepositoryInterface
      */
     private $userRepository;
-    
+
     public function __construct()
     {
-        session_start();
+        $this->initSession();
         $this->initTwig();
         $this->initDatabase();
         $this->initUser();
         $this->initBasket();
+    }
+
+    private function initSession(): void
+    {
+        if (!headers_sent()) {
+            session_start();
+        }
     }
 
     /**
@@ -68,28 +74,20 @@ final class Core implements CoreInterface
      */
     private function initBasket(): void
     {
-        if(!$_SESSION['basket']){
+        if (! $_SESSION['basket']) {
             $_SESSION['basket'] = new Order();
         }
         $this->basket = $_SESSION['basket'];
     }
-    
+
     /**
      * Loads user by session
      */
     private function initUser(): void
     {
-        $this->userRepository = new UserRepository($this);
-        if($_SESSION['user']){
-            $this->user = $this->getUserBySession();
+        if ($_SESSION['user']) {
+            $this->user = $_SESSION['user'];
         }
-    }
-    
-    private function getUserBySession():UserInterface{
-        $user = new User();
-        $user->setPasswordHash($_SESSION['user']['hash']);
-        $user->setEmail($_SESSION['user']['email']);
-        return $this->userRepository->getUserByMailAndHash($user);
     }
 
     private function initTwig(): void
@@ -118,25 +116,14 @@ final class Core implements CoreInterface
         return $this->user;
     }
 
-    private function setUserSession():void{
-        if($this->user){
-            $_SESSION['user'] = [
-                'email'=>$this->user->getEmail(),
-                'hash'=>$this->user->getPasswordHash(),
-            ];
-        }else{
-            unset($_SESSION['user']);
-        }
-    }
-    
     public function setUser(?UserInterface $user = null): void
     {
-        $this->user = $user;
-        $this->setUserSession();
+        $_SESSION['user'] = $this->user = $user;
     }
-    
+
     /**
-     * {@inheritDoc}
+     *
+     * {@inheritdoc}
      * @see \core\CoreInterface::getBasket()
      */
     public function getBasket(): Order
@@ -146,7 +133,8 @@ final class Core implements CoreInterface
 
     /**
      * The basket is depending on the session
-     * {@inheritDoc}
+     *
+     * {@inheritdoc}
      * @see \core\CoreInterface::setBasket()
      */
     public function setBasket(Order $basket): void

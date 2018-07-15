@@ -45,7 +45,7 @@ class CoreTest extends TestCase
     }
     
     public function testSession():void{
-        $this->assertEquals($this->core->getUser()->getPasswordHash(), $_SESSION['user']['hash']);
+        $this->assertEquals($this->core->getUser()->getPasswordHash(), $_SESSION['user']->getPasswordHash());
     }
 }
 
