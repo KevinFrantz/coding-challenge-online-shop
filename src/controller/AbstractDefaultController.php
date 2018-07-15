@@ -3,6 +3,7 @@ namespace controller;
 
 use router\link\Link;
 use router\Router;
+use router\link\LinkCollection;
 
 /**
  * This controllers render the frames/default.html.twig
@@ -53,7 +54,7 @@ class AbstractDefaultController extends AbstractController
                 ], 'logout')
             ];
         }
-        return [
+        return [new LinkCollection('login',[
             new Link([
                 Router::CONTROLLER => 'user',
                 Router::ACTION => 'login'
@@ -62,7 +63,7 @@ class AbstractDefaultController extends AbstractController
                 Router::CONTROLLER => 'user',
                 Router::ACTION => 'register'
             ], 'register')
-        ];
+        ])];
     }
 }
 

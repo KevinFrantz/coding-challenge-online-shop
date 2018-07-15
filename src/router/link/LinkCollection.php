@@ -15,7 +15,8 @@ final class LinkCollection extends ArrayCollection implements LinkCollectionInte
      */
     private $name;
     
-    public function __construct(string $name){
+    public function __construct(string $name,?array $links = []){
+        parent::__construct($links);
         $this->name = $name;
     }
     
