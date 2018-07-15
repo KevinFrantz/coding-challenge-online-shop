@@ -18,11 +18,9 @@ use entity\image\UrlImage;
 final class Product extends AbstractRepository implements ProductInterface
 {
 
-    const TABLE = 'product';
-
+    const TABLE = 'product'; 
+    
     /**
-     * Out of time reasons the values are not escaped!
-     *
      * {@inheritdoc}
      * @see \repository\product\ProductInterface::addProducts()
      */
@@ -59,7 +57,7 @@ final class Product extends AbstractRepository implements ProductInterface
     {
         $products = new ArrayCollection();
         foreach ($fetch as $product) {
-            $products->add($this->createProduct($product['name'], $product['color'], $product['price'], $product['tax'], $product['image']));
+            $products->add($this->createProduct($product['name'], $product['color'], $product['price'], $product['tax'], $product['image'],$product['id']));
         }
         return $products;
     }
@@ -71,7 +69,7 @@ final class Product extends AbstractRepository implements ProductInterface
         return $this->transformFetchToArrayCollection($statement->fetchAll());
     }
 
-    static public function createProduct(string $name, string $color, int $cents, int $tax, string $imagePath): ProductEntity
+    static public function createProduct(string $name, string $color, int $cents, int $tax, string $imagePath,?int $id=null): ProductEntity
     {
         $product = new ProductEntity();
         $product->setName($name);
@@ -85,6 +83,9 @@ final class Product extends AbstractRepository implements ProductInterface
         $image = new UrlImage();
         $image->setImage($imagePath);
         $product->setImage($image);
+        if($id){
+            $product->setId($id);
+        }
         return $product;
     }
 
@@ -94,4 +95,13 @@ final class Product extends AbstractRepository implements ProductInterface
         $statement->execute([$color]);
         return $this->transformFetchToArrayCollection($statement->fetchAll());
     }
+    
+    public function getById(int $id): ProductEntityInterface
+    {
+        $statement = $this->database->prepare('SELECT * FROM ' . self::TABLE . ' WHERE id = ?;');
+        $statement->execute([$id]);
+        $product = $statement->fetch();
+        return $this->createProduct($product['name'], $product['color'], $product['price'], $product['tax'], $product['image'],$product['id']);
+    }
+
 }

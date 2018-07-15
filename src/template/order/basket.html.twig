@@ -14,11 +14,11 @@ basket
 	</tr>
 	{% for product in basket.products %}
 	<tr>
-		<td>product.id</td>
-		<td>product.name</td>
-		<td>product.price.netto.float</td>
-		<td>product.price.tax</td>
-		<td>product.price.gross.float</td>
+		<td>{{product.id}}</td>
+		<td>{{product.name}}</td>
+		<td>{{product.price.netto.float}}</td>
+		<td>{{product.price.tax}}</td>
+		<td>{{product.price.gross.float}}</td>
 	</tr>
 	{% endfor %}
 </table>

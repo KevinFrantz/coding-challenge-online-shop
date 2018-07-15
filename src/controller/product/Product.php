@@ -37,6 +37,7 @@ final class Product extends AbstractDefaultController implements ProductInterfac
         }
         $this->render('product/list.html.twig', [
             'products' => $products,
+            'add_to_basket'=> new Link(['controller'=>'order','action'=>'basket']),
             'colors' => $this->getColors(),
             'menu_items'=>[$this->getColors()]
         ]);
