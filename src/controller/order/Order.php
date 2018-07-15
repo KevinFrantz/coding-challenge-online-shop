@@ -65,6 +65,8 @@ final class Order extends AbstractDefaultController implements OrderInterface
             $this->core->getBasket()->setCustomer($this->core->getUser());
             if($this->orderRepository->saveOrder($this->core->getBasket())){
                 $this->core->setBasket(new OrderEntity());
+            }else{
+                throw new \Exception('Order could not be saved!');
             }
         }
     }
