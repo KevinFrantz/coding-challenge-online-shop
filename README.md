@@ -3,7 +3,7 @@ Coding challenge for a online shop
 ## task
 ### requirements
 1. Create a web application with PHP which works like a really small online shop.  	&#10003;
-2. Create a database with at least 20 products automatically per script.  	&#10003;
+2. Create a database with at least 20 products&#10003; automatically&#10003; per script.  	&#10003;
 3. Create a product listing which display all products from the database.  	&#10003;
 <br> The following information are required:
   - price net and gross  	&#10003;
@@ -30,7 +30,7 @@ method2 &#10003;.
 - Use transactions if it makes sense.  	&#10003;
 - Please cover your code with unit tests.  	&#10003;
 ### time frame
-- one weekend
+- one weekend &#10003;
 ## start
 To run the program execute:
 ```bash
