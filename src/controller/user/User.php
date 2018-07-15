@@ -2,6 +2,7 @@
 namespace controller\user;
 
 use controller\AbstractDefaultController;
+use router\Router;
 
 /**
  *
@@ -11,7 +12,13 @@ use controller\AbstractDefaultController;
 final class User extends AbstractDefaultController implements UserInterface
 {
     public function logout(): void
-    {}
+    {
+        $this->core->setUser(null);
+        $router = new Router();
+        $router->setCore($this->core);
+        $router->setGet([]);
+        $router->route();
+    }
 
     public function login(): void
     {
