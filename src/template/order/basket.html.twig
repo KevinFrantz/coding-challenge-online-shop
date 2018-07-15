@@ -11,6 +11,7 @@ basket
 		<th>price(net)</th>
 		<th>tax (%)</th>
 		<th>price (gross)</th>
+		<th>image</th>
 	</tr>
 	{% for product in basket.products %}
 	<tr>
@@ -19,6 +20,7 @@ basket
 		<td>{{product.price.netto.float}} {{product.price.netto.symbol}}</td>
 		<td>{{product.price.tax}}</td>
 		<td>{{product.price.gross.float}} {{product.price.gross.symbol}}</td>
+		<td><img src="{{product.image.icon }}" /></td>
 	</tr>
 	{% endfor %}
 </table>

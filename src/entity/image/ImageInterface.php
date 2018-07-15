@@ -22,5 +22,7 @@ interface ImageInterface
      * @return string
      */
     public function getThumbnail():string;
+    
+    public function getIcon():string;
 }
 

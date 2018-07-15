@@ -31,5 +31,11 @@ final class UrlImage implements ImageInterface
     {
         $this->path = $path;
     }
+    
+    public function getIcon(): string
+    {
+        return str_replace('200/300', '50/50', $this->path);
+    }
+
 }
 
