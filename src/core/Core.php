@@ -1,6 +1,7 @@
 <?php
 namespace core;
 
+use entity\order\Order;
 use entity\user\UserInterface;
 
 /**
@@ -39,6 +40,12 @@ final class Core implements CoreInterface
      */
     private $database;
 
+    /**
+     * 
+     * @var Order
+     */
+    private $basket;
+    
     public function __construct()
     {
         $this->initTwig();
@@ -85,6 +92,25 @@ final class Core implements CoreInterface
     public function setUser(?UserInterface $user = null): void
     {
         $_SESSION['user'] = $this->user = $user;
+    }
+    
+    /**
+     * {@inheritDoc}
+     * @see \core\CoreInterface::getBasket()
+     */
+    public function getBasket(): Order
+    {
+        return $this->basket;
+    }
+
+    /**
+     * The basket is depending on the session
+     * {@inheritDoc}
+     * @see \core\CoreInterface::setBasket()
+     */
+    public function setBasket(Order $basket): void
+    {
+        $_SESSION['basket'] = $this->basket = $basket;
     }
 }
 
