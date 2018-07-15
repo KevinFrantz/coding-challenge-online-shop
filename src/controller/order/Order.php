@@ -45,9 +45,9 @@ final class Order extends AbstractDefaultController implements OrderInterface
     private function store(): void
     {
         $this->core->getBasket()->setCustomer($this->core->getUser());
-        if($this->orderRepository->saveOrder($this->core->getBasket())){
+        if ($this->orderRepository->saveOrder($this->core->getBasket())) {
             $this->core->setBasket(new OrderEntity());
-        }else{
+        } else {
             throw new \Exception('Order could not be saved!');
         }
     }
@@ -59,7 +59,7 @@ final class Order extends AbstractDefaultController implements OrderInterface
         }
         $this->render('order/basket.html.twig', [
             'basket' => $this->core->getBasket(),
-            'payment_methods'=>AbstractPayment::getPaymentMethods(),
+            'payment_methods' => AbstractPayment::getPaymentMethods()
         ]);
     }
 
@@ -68,7 +68,7 @@ final class Order extends AbstractDefaultController implements OrderInterface
         if ($this->post['add']) {
             $this->addProduct();
         }
-        if ($this->post['store']){
+        if ($this->post['store']) {
             $this->store();
         }
     }

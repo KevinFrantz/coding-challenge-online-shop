@@ -13,6 +13,7 @@ use entity\user\User as UserEntity;
  */
 final class User extends AbstractDefaultController implements UserInterface
 {
+
     /**
      *
      * @var UserRepository
@@ -68,7 +69,7 @@ final class User extends AbstractDefaultController implements UserInterface
         $this->route();
     }
 
-    private function validateRegistrationData():bool
+    private function validateRegistrationData(): bool
     {
         if (! filter_var($this->post['email'], FILTER_VALIDATE_EMAIL)) {
             throw new \Exception('Not a valid email!');

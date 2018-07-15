@@ -64,7 +64,7 @@ final class Core implements CoreInterface
 
     private function initSession(): void
     {
-        if (!headers_sent()) {
+        if (! headers_sent()) {
             session_start();
         }
     }

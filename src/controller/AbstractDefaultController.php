@@ -22,8 +22,8 @@ class AbstractDefaultController extends AbstractController
     private function addMenuItems(array $variables): array
     {
         if (array_key_exists('menu_items', $variables)) {
-            $variables['menu_items'] = array_merge($this->getMenuItems(),$variables['menu_items']);
-        }else{
+            $variables['menu_items'] = array_merge($this->getMenuItems(), $variables['menu_items']);
+        } else {
             $variables['menu_items'] = $this->getMenuItems();
         }
         return $variables;
@@ -54,16 +54,18 @@ class AbstractDefaultController extends AbstractController
                 ], 'logout')
             ];
         }
-        return [new LinkCollection('login',[
-            new Link([
-                Router::CONTROLLER => 'user',
-                Router::ACTION => 'login'
-            ], 'login'),
-            new Link([
-                Router::CONTROLLER => 'user',
-                Router::ACTION => 'register'
-            ], 'register')
-        ])];
+        return [
+            new LinkCollection('login', [
+                new Link([
+                    Router::CONTROLLER => 'user',
+                    Router::ACTION => 'login'
+                ], 'login'),
+                new Link([
+                    Router::CONTROLLER => 'user',
+                    Router::ACTION => 'register'
+                ], 'register')
+            ])
+        ];
     }
 }
 

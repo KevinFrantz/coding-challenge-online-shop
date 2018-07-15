@@ -7,19 +7,20 @@ use entity\order\Order;
 /**
  *
  * @author kevinfrantz
- *
+ *        
  */
 interface CoreInterface
 {
-    public function getDatabase():\PDO;
 
-    public function getTwig():\Twig_Environment;
+    public function getDatabase(): \PDO;
 
-    public function getUser():?UserInterface;
+    public function getTwig(): \Twig_Environment;
 
-    public function setUser(?UserInterface $user = null):void;
-    
-    public function getBasket():Order;
-    
-    public function setBasket(Order $basket):void;
+    public function getUser(): ?UserInterface;
+
+    public function setUser(?UserInterface $user = null): void;
+
+    public function getBasket(): Order;
+
+    public function setBasket(Order $basket): void;
 }

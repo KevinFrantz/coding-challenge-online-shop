@@ -8,6 +8,7 @@ namespace controller\standart;
  */
 interface StandartInterface
 {
-    public function homepage():void;
+
+    public function homepage(): void;
 }
 

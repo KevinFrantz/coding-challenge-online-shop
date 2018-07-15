@@ -28,8 +28,7 @@ basket
 		{% for key,payment in payment_methods %}
 		<option value="{{ key }}">{{ payment.name }}</option>
 		{% endfor %}
-	</select>
-	<input type="hidden" name="store" value="1" />
-	<input type="submit" class="btn btn-primary" value="Order" />
+	</select> <input type="hidden" name="store" value="1" /> <input type="submit"
+		class="btn btn-primary" value="Order" />
 </form>
 {% endblock %}

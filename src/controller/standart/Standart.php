@@ -10,7 +10,9 @@ use controller\AbstractDefaultController;
  */
 final class Standart extends AbstractDefaultController implements StandartInterface
 {
-    public function homepage():void{
+
+    public function homepage(): void
+    {
         $this->render('standart/homepage.html.twig');
     }
 }

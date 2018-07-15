@@ -22,12 +22,13 @@
 			</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					{%for link in item %}
-					<a class="dropdown-item {% if link.active %}active{% endif %}" href="{{ link.url }}">{{ link.name }}</a>
+					<a class="dropdown-item {% if link.active %}active{% endif %}"
+						href="{{ link.url }}"> {{ link.name }}
+					</a>
 					{% endfor %}
 				</div></li>
 			{% endif %}
 			{% endif %}
-
 			{% endfor %}
 		</ul>
 	</div>
