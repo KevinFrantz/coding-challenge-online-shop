@@ -10,11 +10,6 @@ use entity\order\OrderInterface as OrderEntityInterface;
  */
 interface OrderInterface
 {
-    public function saveOrder(OrderEntityInterface $order):void;
-    
-    /**
-     * This function just exists for maintaining reasons
-     */
-    public function deleteAllOrders():void;
+    public function saveOrder(OrderEntityInterface $order):bool;
 }
 

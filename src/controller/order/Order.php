@@ -7,6 +7,8 @@ use repository\order\OrderInterface as OrderRepositoryInterface;
 use repository\product\ProductInterface as ProductRepositoryInterface;
 use repository\product\Product as ProductRepository;
 use entity\payment\AbstractPayment;
+use repository\order\Order as OrderRepository;
+use entity\order\Order as OrderEntity;
 
 /**
  *
@@ -32,6 +34,7 @@ final class Order extends AbstractDefaultController implements OrderInterface
     {
         parent::__construct($core);
         $this->productRepository = new ProductRepository($this->core);
+        $this->orderRepository = new OrderRepository($this->core);
     }
 
     private function addProduct(): void
@@ -57,6 +60,12 @@ final class Order extends AbstractDefaultController implements OrderInterface
     {
         if ($this->post['add']) {
             $this->addProduct();
+        }
+        if ($this->post['store']){
+            $this->core->getBasket()->setCustomer($this->core->getUser());
+            if($this->orderRepository->saveOrder($this->core->getBasket())){
+                $this->core->setBasket(new OrderEntity());
+            }
         }
     }
 }
