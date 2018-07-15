@@ -21,9 +21,10 @@ class AbstractDefaultController extends AbstractController
     private function addMenuItems(array $variables): array
     {
         if (array_key_exists('menu_items', $variables)) {
-            throw new \Exception('You aren\'t allowed to define this key!');
+            $variables['menu_items'] = array_merge($this->getMenuItems(),$variables['menu_items']);
+        }else{
+            $variables['menu_items'] = $this->getMenuItems();
         }
-        $variables['menu_items'] = $this->getMenuItems();
         return $variables;
     }
 

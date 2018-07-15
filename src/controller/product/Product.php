@@ -5,6 +5,8 @@ use repository\product\Product as ProductRepository;
 use core\Core;
 use router\link\Link;
 use controller\AbstractDefaultController;
+use Doctrine\Common\Collections\ArrayCollection;
+use router\link\LinkCollection;
 
 /**
  *
@@ -35,17 +37,18 @@ final class Product extends AbstractDefaultController implements ProductInterfac
         }
         $this->render('product/list.html.twig', [
             'products' => $products,
-            'colors' => $this->getColors()
+            'colors' => $this->getColors(),
+            'menu_items'=>[$this->getColors()]
         ]);
     }
 
-    private function getColors(): array
+    private function getColors(): ArrayCollection
     {
-        $colors = [];
+        $colors = new LinkCollection('color filter');
         foreach ($this->productRepository->getColors() as $color) {
             $parameters = $_GET;
             $parameters['color'] = $color['color'];
-            $colors[] = new Link($parameters, $color['color']);
+            $colors->add(new Link($parameters, $color['color']));
         }
         return $colors;
     }
