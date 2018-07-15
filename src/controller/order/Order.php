@@ -44,6 +44,9 @@ final class Order extends AbstractDefaultController implements OrderInterface
 
     private function store(): void
     {
+        if(!$this->core->getUser()){
+            throw new \Exception('Just registered users can order!');
+        }
         $this->core->getBasket()->setCustomer($this->core->getUser());
         if ($this->orderRepository->saveOrder($this->core->getBasket())) {
             $this->core->setBasket(new OrderEntity());
