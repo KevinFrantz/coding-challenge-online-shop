@@ -51,8 +51,20 @@ final class Core implements CoreInterface
         $this->initTwig();
         $this->initDatabase();
         $this->initUser();
+        $this->initBasket();
     }
 
+    /**
+     * Loads basket by session
+     */
+    private function initBasket(): void
+    {
+        if(!$_SESSION['basket']){
+            $_SESSION['basket'] = new Order();
+        }
+        $this->basket = $_SESSION['basket'];
+    }
+    
     /**
      * Loads user by session
      */

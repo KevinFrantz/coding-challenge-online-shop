@@ -1,0 +1,25 @@
+{% extends 'frames/default.html.twig' %}
+{% block title %}
+basket
+{% endblock %}
+{% block content %}
+<h1>Basket</h1>
+<table class="table">
+	<tr>
+		<th>id</th>
+		<th>name</th>
+		<th>price(net)</th>
+		<th>tax (%)</th>
+		<th>price (gross)</th>
+	</tr>
+	{% for product in basket.products %}
+	<tr>
+		<td>product.id</td>
+		<td>product.name</td>
+		<td>product.price.netto.float</td>
+		<td>product.price.tax</td>
+		<td>product.price.gross.float</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

@@ -1,14 +1,14 @@
 <?php
 namespace controller\order;
 
-use controller\AbstractController;
+use controller\AbstractDefaultController;
 
 /**
  *
  * @author kevinfrantz
  *        
  */
-final class Order extends AbstractController implements OrderInterface
+final class Order extends AbstractDefaultController implements OrderInterface
 {
     public function addProduct(): void
     {}
@@ -17,7 +17,9 @@ final class Order extends AbstractController implements OrderInterface
     {}
 
     public function basket(): void
-    {}
+    {
+        $this->render('order/basket.html.twig',['basket'=>$this->core->getBasket()]);
+    }
 
     public function selectPaymentMethod(): void
     {}
