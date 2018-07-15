@@ -14,7 +14,9 @@ class UserTest extends TestCase
     
     const EMAIL = 'test@mail.world';
     
-    const HASH = '1235';
+    const HASH = '$2y$10$123581347112358134711urUo63Gbn3BFTEe9UGbPxJwrZ80q.LbK';
+    
+    const PASSWORD = 'passwort:)';
     
     const ID = 5678;
     
@@ -27,7 +29,7 @@ class UserTest extends TestCase
         $this->user = new User();
         $this->user->setName(self::NAME);
         $this->user->setEmail(self::EMAIL);
-        $this->user->setPasswordHash(self::HASH);
+        $this->user->setPasswordHashByPassword(self::PASSWORD);
         $this->user->setId(self::ID);
     }
     

@@ -12,6 +12,6 @@ interface UserInterface
 {
     public function addUser(UserEntityInterface $user):void;
     
-    public function getUserByMailAndHash(string $mail,string $hash):UserEntityInterface;
+    public function getUserByMailAndHash(UserEntityInterface $user):UserEntityInterface;
 }
 

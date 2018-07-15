@@ -56,12 +56,11 @@ final class User implements UserInterface
     }
     
     /**
-     * In a real application you should use a salt ;)
      * @param string $password
      */
     public function setPasswordHashByPassword(string $password): void
     {
-        $this->passwordHash = password_hash($password, PASSWORD_BCRYPT);
+        $this->passwordHash = $this->hashPassword($password);
     }
 
     public function getEmail(): string
@@ -77,6 +76,17 @@ final class User implements UserInterface
     {
         return $this->id;
     }
+    
+    /**
+     * In a real application you should use a salt ;)
+     * @param string $password
+     * @return string
+     */
+    private function hashPassword(string $password): string
+    {
+        return password_hash($password, PASSWORD_BCRYPT,['salt' => '1235813471123581347112358134']);
+    }
+
 
 }
 

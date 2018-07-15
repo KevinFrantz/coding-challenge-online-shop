@@ -2,6 +2,7 @@
 namespace controller;
 
 use core\CoreInterface;
+use router\Router;
 
 /**
  *
@@ -36,5 +37,12 @@ abstract class AbstractController
         }
         $variables['user'] = $this->core->getUser();
         return $variables;
+    }
+    
+    protected function route(?array $get =[]):void{
+        $router = new Router();
+        $router->setCore($this->core);
+        $router->setGet($get);
+        $router->route();
     }
 }
