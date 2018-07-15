@@ -18,6 +18,8 @@ interface UserInterface extends UniqueInterface
      */
     public function setPasswordHash(string $hash):void;
     
+    public function setPasswordHashByPassword(string $password): void;
+    
     /**
      * @return string
      */

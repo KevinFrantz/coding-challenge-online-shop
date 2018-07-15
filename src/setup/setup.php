@@ -2,6 +2,8 @@
 use core\Core;
 use Doctrine\Common\Collections\ArrayCollection;
 use repository\product\Product as ProductRepository;
+use repository\user\User as UserRepository;
+use entity\user\User;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -44,6 +46,14 @@ foreach ($lines as $number=>$line) {
     $products->add($product);
 }
 
-$productRepository = new ProductRepository((new Core())->getDatabase());
+$productRepository = new ProductRepository(new Core());
 $productRepository->addProducts($products);
+
+echo "Insert dummy user...\n";
+$user= new User();
+$user->setName('Maxla Mustermensch');
+$user->setPasswordHashByPassword('passwort:)');
+$user->setEmail('test@mail.test');
+$userRepository = new UserRepository(new Core());
+$userRepository->addUser($user);
 ?>

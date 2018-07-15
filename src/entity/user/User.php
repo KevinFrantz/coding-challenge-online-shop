@@ -54,6 +54,15 @@ final class User implements UserInterface
     {
         $this->passwordHash = $hash;
     }
+    
+    /**
+     * In a real application you should use a salt ;)
+     * @param string $password
+     */
+    public function setPasswordHashByPassword(string $password): void
+    {
+        $this->passwordHash = password_hash($password, PASSWORD_BCRYPT);
+    }
 
     public function getEmail(): string
     {
