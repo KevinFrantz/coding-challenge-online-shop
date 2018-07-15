@@ -41,3 +41,4 @@ To run the tests execute:
 ```bash
   bash ./test.sh
 ```
+Tests just exist for the core and the entities. UnitTest you will find in the directory of the unit.
