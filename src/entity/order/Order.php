@@ -42,12 +42,17 @@ final class Order implements OrderInterface
     
     public function removeProduct(ProductInterface $product): void
     {
-        $this->products->remove($product->getId());
+        foreach ($this->products->toArray() as $productItem){
+            if($productItem->getId() ===
+                $product->getId()){
+                $this->products->removeElement($productItem);
+            }
+        }
     }
 
     public function addProduct(ProductInterface $product): void
     {
-        $this->products->set($product->getId(), $product);
+        $this->products->add($product);
     }
 
     public function getId(): int

@@ -56,7 +56,7 @@ class OrderTest extends TestCase
     }
     
     public function testAdd():void{
-        $this->assertEquals($this->product, $this->order->getProducts()->get($this->product->getId()));
+        $this->assertEquals(true, $this->order->getProducts()->contains($this->product));
     }
     
     public function testRemove():void{
