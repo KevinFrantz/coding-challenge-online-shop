@@ -15,8 +15,6 @@ services:
     container_name: php_web
     depends_on:
       - db
-    volumes:
-      - ./src/:/var/www/html/
     ports:
       - "8100:80"
     stdin_open: true
