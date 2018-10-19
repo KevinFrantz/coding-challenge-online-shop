@@ -51,3 +51,6 @@ To run the tests execute:
   bash ./test.sh
 ```
 Tests just exist for the core, the entities and some other files. UnitTest you will find in the directory of the unit.
+
+## license 
+For license see LICENSE.txt.
